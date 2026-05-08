@@ -29,14 +29,6 @@ mkdir -p ~/.local/bin && curl -sL "https://raw.githubusercontent.com/webe132/Net
 
 > **Важно:** эту команду нужно запускать именно в Git Bash, а не в PowerShell или CMD.
 
-### Windows — PowerShell / CMD
-
-Если нужны `.bat`-обёртки для запуска из PowerShell или CMD, запусти в **PowerShell**:
-
-```powershell
-$d="$env:USERPROFILE\.local\bin"; New-Item -Force -Type Directory $d | Out-Null; curl.exe -sL "https://raw.githubusercontent.com/webe132/NetChecker/main/netchecker.sh" -o "$d\netchecker"; $b="@echo off`r`nbash `"%~dp0netchecker`" %*`r`n"; [IO.File]::WriteAllText("$d\netchecker.bat",$b,[Text.Encoding]::ASCII); [IO.File]::WriteAllText("$d\netcheck.bat",$b,[Text.Encoding]::ASCII); Copy-Item "$d\netchecker" "$d\netcheck"; $p=[Environment]::GetEnvironmentVariable('PATH','User'); if($p -notlike "*$d*"){[Environment]::SetEnvironmentVariable('PATH',"$p;$d",'User'); $env:PATH+=";$d"}; Write-Host "Готово! Запускай: netcheck"
-```
-
 ### Linux / macOS
 
 ```bash
